@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 
 //Components imports
 import Header from './components/Header';
+import Article from './pages/Article';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +23,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
+        <Route path="/article/:id" element={<Article />} />
         <Route path="/shops" element={<Shops />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
