@@ -13,28 +13,42 @@ import { articleList } from "../../Data/articles"
 // }
 
 const ArticleContainer = styled.div`
-    margin: 30px;
+    margin: 2%;
     display: flex;
     flex-direction: row;
 `
 
+const ImgWrapper = styled.div`
+    height: 500px;
+    width: 500px;
+    background-color: #dadada;
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const CenteredImg = styled.img`
+    max-height: 490px;
+    max-width: 490px;
+`
 //function Article({category, name, description, price, cover}: ArticleProps) {
 function Article() {
     const { id } = useParams()
-    const idNumber = parseInt (id)
+    const idNumber = parseInt(id)
 
     const article = articleList.find((article) => {return article.id === idNumber});
 
     return (
         <ArticleContainer>
-            <div>
+            <ImgWrapper>
                 { article?.cover ? (
-                    <img style={{height: '15em', padding: '2em'}} src={article.cover} alt='cover'/>
+                    <CenteredImg src={article.cover} alt='cover'/>
                     ) : (
-                    <img style={{height: '15em', padding: '2em'}} src={default_cover} alt='default_cover'/>
+                    <CenteredImg src={default_cover} alt='default_cover'/>
                     )
                 }
-            </div>
+            </ImgWrapper>
             <div>
                 <h2>{article?.name}</h2>
                 <span style={{ borderBottom: '2px black solid' }}>Category: {article?.category}</span>
