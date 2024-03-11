@@ -7,17 +7,21 @@ import reportWebVitals from './reportWebVitals';
 //Pages imports
 import Home from './pages/Home';
 import Articles from './pages/Articles';
+import Article from './pages/Article';
 import Shops from './pages/Shops';
 import Contact from './pages/Contact';
 
 //Components imports
 import Header from './components/Header';
-import Article from './pages/Article';
+
+//Utils imports
+import GlobalStyle from './utils/Globalstyle';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <GlobalStyle />
     <Router>
       <Header />
       <Routes>
