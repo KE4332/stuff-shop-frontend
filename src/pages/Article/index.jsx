@@ -3,6 +3,7 @@ import styled from "styled-components"
 import default_cover from '../../assets/default-stuff-cover.jpg'
 import { useParams } from "react-router-dom"
 import { articleList } from "../../Data/articles"
+import { useState } from "react"
 
 // interface ArticleProps {
 //     category: string,
@@ -43,11 +44,13 @@ const ImageSelector = styled.div`
     background-color: pink;
     width: 500px;
     height: 57px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 `
 
-const ListImage = styled.div`
-    display: flex;
-
+const ImgThumbail = styled.img`
+    height: 50px;
 `
 
 const ArticleTitle = styled.h2`
@@ -60,26 +63,29 @@ const ArticleDescription = styled.p`
     padding: 16px;
 `
 
-//function Article({category, name, description, price, cover}: ArticleProps) {
 function Article() {
     const { id } = useParams()
     const idNumber = parseInt(id)
 
     const article = articleList.find((article) => {return article.id === idNumber});
 
+
+    const [currentImageInView, setImageInView] = useState(article.images ? article.images[0] : default_cover)
+
     return (
         <ArticleContainer>
             <ImageViewer>
                 <ImgWrapper>
-                    { article?.images ? (
-                        <ImgInView src={article.images[0]} alt='cover'/>
-                        ) : (
-                        <ImgInView src={default_cover} alt='default_cover'/>
-                        )
-                    }
+                        <ImgInView src={currentImageInView} alt='Image in View'/>
                 </ImgWrapper>
                 <ImageSelector>
-                    <ListImage></ListImage>
+                    { article.images ? (
+                        article.images.map((image, index) => (
+                            <ImgThumbail key={`${image}-${index}`} src={image} alt='thumbail'
+                            onClick={() => setImageInView(article.images[index])} />
+                        ))
+                        ) : null
+                    }
                 </ImageSelector>
             </ImageViewer>
 
