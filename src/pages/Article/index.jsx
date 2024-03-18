@@ -1,6 +1,5 @@
 import styled from "styled-components"
 
-import default_cover from '../../assets/default-stuff-cover.jpg'
 import { useParams } from "react-router-dom"
 import { articleList } from "../../Data/articles"
 import { useState } from "react"
@@ -40,6 +39,16 @@ const ImgInView = styled.img`
     max-width: 490px;
 `
 
+const LeftButton = styled.button`
+    position: absolute;
+    left: 2%;
+`
+
+const RightButton = styled.button`
+    position: absolute;
+    right: 64%;
+`
+
 const ImageSelector = styled.div`
     background-color: pink;
     width: 500px;
@@ -69,22 +78,32 @@ function Article() {
 
     const article = articleList.find((article) => {return article.id === idNumber});
 
-
-    const [currentImageInView, setImageInView] = useState(article.images ? article.images[0] : default_cover)
+    const [currentIndex, setIndex] = useState(0)
 
     return (
         <ArticleContainer>
             <ImageViewer>
                 <ImgWrapper>
-                        <ImgInView src={currentImageInView} alt='Image in View'/>
+                    {
+                        currentIndex !== 0 ? (
+                            <LeftButton onClick={() => setIndex(currentIndex-1)}>{'<-'}</LeftButton>
+                        ) : null
+                    }
+
+                    <ImgInView src={article.images[currentIndex]} alt='Image in View'/>
+                    {
+                        currentIndex !== article.images.length - 1 ? (
+                            <RightButton onClick={() => setIndex(currentIndex+1)}>{'->'}</RightButton>
+                        ) : null
+                    }
                 </ImgWrapper>
                 <ImageSelector>
-                    { article.images ? (
+                    {
                         article.images.map((image, index) => (
                             <ImgThumbail key={`${image}-${index}`} src={image} alt='thumbail'
-                            onClick={() => setImageInView(article.images[index])} />
+                            style={currentIndex === index ? {border: '3px solid black'} : null}
+                            onClick={() => {setIndex(index)}} />
                         ))
-                        ) : null
                     }
                 </ImageSelector>
             </ImageViewer>
