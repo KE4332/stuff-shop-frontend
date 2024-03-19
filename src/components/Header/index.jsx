@@ -15,9 +15,12 @@ const HomeLogo = styled.img`
 `
 
 const StyledLink = styled(Link)`
-  border: 2px red double;
   padding: 1em;
   margin: 1em;
+  &:hover {
+    border: 1px black solid;
+    border-radius: 10px;
+  }
 `
 
 function Header() {

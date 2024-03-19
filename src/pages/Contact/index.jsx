@@ -1,10 +1,41 @@
+import styled from "styled-components"
+
+const ContactBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    border: 3px solid black;
+    border-radius: 3em;
+    margin: 2em 10em 10em 10em;
+    padding: 1em;
+    background: linear-gradient(#8360c3, #2ebf91);
+`
+
+const TitleContactBox = styled.h2`
+    border: 4px solid black;
+    border-radius: 4em;
+    background-color: white;
+    position: absolute;
+    top: 13%;
+    left: 28%;
+    padding: 18px;
+    font-size: 2em;
+
+`
 
 function Contact() {
     return (
         <div>
-            <p>☎️06 06 06 06 06</p>
-            <p>📧contact@stuff-shop.com</p>
+            <TitleContactBox>Nous contacter</TitleContactBox>
+            <ContactBox>
+                <p>☎️06 06 06 06 06</p>
+                <p>📧contact@stuff-shop.com</p>
+                <p>🏠1 Avenue de France 75000 Paris</p>
+            </ContactBox>
         </div>
+
     )
 }
 
