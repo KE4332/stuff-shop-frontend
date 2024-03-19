@@ -30,9 +30,9 @@ function Contact() {
         <div>
             <TitleContactBox>Nous contacter</TitleContactBox>
             <ContactBox>
-                <p>☎️06 06 06 06 06</p>
-                <p>📧contact@stuff-shop.com</p>
-                <p>🏠1 Avenue de France 75000 Paris</p>
+                <span>☎️06 06 06 06 06</span>
+                <span>📧contact@stuff-shop.com</span>
+                <span>🏠1 Avenue de France 75000 Paris</span>
             </ContactBox>
         </div>
 
