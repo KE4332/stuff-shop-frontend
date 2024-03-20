@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { articleList } from "../../Data/articles"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const ArticleList = styled.ul`
     display: flex;

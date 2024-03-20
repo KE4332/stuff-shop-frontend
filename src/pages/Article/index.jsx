@@ -60,6 +60,10 @@ const ImageSelector = styled.div`
 
 const ImgThumbail = styled.img`
     height: 50px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const ArticleTitle = styled.h2`
