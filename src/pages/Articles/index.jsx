@@ -15,12 +15,13 @@ const ArticleItem = styled.div`
     width: ${WidthArticleItem}px;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 3px double black;
     margin-right: 40px;
     background:#dfdfdf;
 
     &:hover {
         cursor: pointer;
+        border-style: solid;
     }
 
     &:hover .articleName {
