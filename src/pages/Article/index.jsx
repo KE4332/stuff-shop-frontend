@@ -63,7 +63,7 @@ const ImageSelector = styled.div`
 
 const ImgThumbail = styled.img`
     height: 50px;
-
+    border-radius: 10px;
     &:hover {
         cursor: pointer;
     }
@@ -109,7 +109,7 @@ function Article() {
                         article.images.map((image, index) => (
                             <ImgThumbail key={`${image}-${index}`} src={image} alt='thumbail'
                             style={currentIndex === index ? {border: '3px solid black'} : null}
-                            onClick={() => {setIndex(index)}} />
+                            onMouseEnter={() => {setIndex(index)}} />
                         ))
                     }
                 </ImageSelector>
