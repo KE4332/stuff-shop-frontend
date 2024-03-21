@@ -11,6 +11,10 @@ const ContactBox = styled.div`
     margin: 2em 10em 10em 10em;
     padding: 1em;
     background: linear-gradient(#8360c3, #2ebf91);
+
+    > span {
+        margin: 1em;
+    }
 `
 
 const TitleContactBox = styled.h2`
@@ -22,7 +26,6 @@ const TitleContactBox = styled.h2`
     left: 28%;
     padding: 18px;
     font-size: 2em;
-
 `
 
 function Contact() {
