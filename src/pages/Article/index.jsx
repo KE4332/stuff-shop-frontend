@@ -39,13 +39,16 @@ const ImgInView = styled.img`
     max-width: 490px;
 `
 
-const LeftButton = styled.button`
+const ArrowButton = styled.button`
     position: absolute;
+    height: 8%;
+`
+
+const LeftButton = styled(ArrowButton)`
     left: 2%;
 `
 
-const RightButton = styled.button`
-    position: absolute;
+const RightButton = styled(ArrowButton)`
     right: 64%;
 `
 
