@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom"
 import { articleList } from "../../Data/articles"
 import { useState } from "react"
 
+import closeBtn from "../../assets/closeBtn.png"
+// import { Image, ImageGroup } from "react-fullscreen-image"
+
 // interface ArticleProps {
 //     category: string,
 //     name: string,
@@ -79,6 +82,21 @@ const ArticleDescription = styled.p`
     padding: 16px;
 `
 
+const FullScreenImg = styled.img`
+    width: '100%';
+    height: '100%';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+`
+
+const CloseBtn = styled.img`
+    height: 10%;
+    position: absolute;
+    top: 1%;
+    right:1%
+`
+
 function Article() {
     const { id } = useParams()
     const idNumber = parseInt(id)
@@ -87,21 +105,23 @@ function Article() {
 
     const [currentIndex, setIndex] = useState(0)
 
+    const [fullScreenImage, setFullscreenImage] = useState(null);
+    /*const goFullscren = event => {
+        event.currentTarget.fullScreen(true);
+    }*/
+    const nb_images = article.images.length
+
     return (
         <ArticleContainer>
             <ImageViewer>
                 <ImgWrapper>
                     {
-                        currentIndex !== 0 ? (
-                            <LeftButton onClick={() => setIndex(currentIndex-1)}>{'<-'}</LeftButton>
-                        ) : null
+                        <LeftButton onClick={() => setIndex((currentIndex + nb_images - 1) % nb_images)}>{'<-'}</LeftButton>
                     }
 
                     <ImgInView src={article.images[currentIndex]} alt='Image in View'/>
                     {
-                        currentIndex !== article.images.length - 1 ? (
-                            <RightButton onClick={() => setIndex(currentIndex+1)}>{'->'}</RightButton>
-                        ) : null
+                        <RightButton onClick={() => setIndex((currentIndex+1) % nb_images)}>{'->'}</RightButton>
                     }
                 </ImgWrapper>
                 <ImageSelector>
@@ -109,7 +129,17 @@ function Article() {
                         article.images.map((image, index) => (
                             <ImgThumbail key={`${image}-${index}`} src={image} alt='thumbail'
                             style={currentIndex === index ? {border: '3px solid black'} : null}
-                            onMouseEnter={() => {setIndex(index)}} />
+                            onMouseEnter={() => {setIndex(index)}}
+                            // onClick={() => {setFullscreenImage(); console.log(image); console.log(fullScreenImage)}}
+                            onClick={(event) => {
+                                let file = event.target.src
+                                console.log(file)
+                                console.log(image)
+                                setFullscreenImage(file)
+                                console.log(fullScreenImage)
+                                }
+                            }
+                            />
                         ))
                     }
                 </ImageSelector>
@@ -123,6 +153,13 @@ function Article() {
                 <h3>{article?.price} €</h3>
                 <ArticleDescription>{article?.description}</ArticleDescription>
             </div>
+
+            {fullScreenImage ? (
+                <div>
+                    <FullScreenImg src={fullScreenImage} alt="fullScreenImage"/>
+                    <CloseBtn src={closeBtn} alt='close button' onClick={() => {console.log('close call'); setFullscreenImage(null)}}/>
+                </div>
+            ) : null}
         </ArticleContainer>
     )
 }
