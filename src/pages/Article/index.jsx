@@ -40,9 +40,11 @@ const ImgWrapper = styled.div`
 const ImgInView = styled.img`
     max-height: 490px;
     max-width: 490px;
+    border: 5px double rgba(0,0,0,0);
 
     &:hover {
         cursor: pointer;
+        border-color: black;
     }
 `
 
@@ -93,6 +95,7 @@ const ImageSelector = styled.div`
 
 const ImgThumbail = styled.img`
     height: 50px;
+    border: 3px solid rgba(0,0,0,0);
     border-radius: 10px;
     &:hover {
         cursor: pointer;
@@ -166,7 +169,7 @@ function Article() {
                     {
                         article.images.map((image, index) => (
                             <ImgThumbail key={`${image}-${index}`} src={image} alt='thumbail'
-                            style={currentIndex === index ? {border: '3px solid black'} : null}
+                            style={currentIndex === index ? {borderColor: 'black'} : null}
                             onMouseEnter={() => {setIndex(index)}}
                             onClick={() => {setFullscreenImage(true)}}
                             />
