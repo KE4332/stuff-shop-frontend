@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import defaultShopLogo from '../../assets/shopLogo.png'
 import { shopsList } from '../../Data/shops'
+import { useNavigate } from 'react-router-dom';
 
 const ShopList = styled.div`
     display: flex;
@@ -82,10 +83,13 @@ function currentlyOpenString(openingHours) {
 }
 
 function Shops() {
+
+    const navigate = useNavigate()
+
     return (
         <ShopList>
             {shopsList.map(({id, name, adress, cover, openingHours }) =>
-                <ShopCard key={id}>
+                <ShopCard key={id} onClick={() => navigate(`/shops/${id}`)}>
                     <CoverShop src={cover ? cover : defaultShopLogo} alt='cover'/>
                     <ShopCardText>
                         <SpanShopCard className="shopName">{name}</SpanShopCard>

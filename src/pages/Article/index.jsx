@@ -112,7 +112,7 @@ const ArticleDescription = styled.p`
     padding: 16px;
 `
 
-const ImgWrapper2 = styled.div`
+const FSImgWrapper = styled.div`
     height: 100%;
     width: 100%;
     background-color: #a5a5a5e0;
@@ -189,9 +189,9 @@ function Article() {
 
             {fullScreenImage ? (
                 <div>
-                    <ImgWrapper2>
+                    <FSImgWrapper>
                         <FullScreenImg src={article.images[currentIndex]} alt="fullScreenImage"/>
-                    </ImgWrapper2>
+                    </FSImgWrapper>
                     <FSLeftButton onClick={() => setPrevIndex()}/>
                     <FSRightButton onClick={() => setNextIndex()}/>
                     <CloseBtn src={closeBtn} alt='close button' onClick={() => setFullscreenImage(false)}/>

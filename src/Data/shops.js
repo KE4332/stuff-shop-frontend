@@ -19,9 +19,9 @@ export const shopsList = [
     },
     {
         id: 2,
-        name: "Galerie Lafayettes Haussman",
+        name: "Magasin 2",
         cover: GLHaussmannCover,
-        adress: "40 Boulevard Haussmann, 75009 Paris",
+        adress: "2 avenue de France, 75001 Paris",
         openingHours: [
             [[10,0],[20,30]],
             [[10,0],[20,30]],
@@ -31,8 +31,8 @@ export const shopsList = [
             [[10,0],[20,30]],
             [[11,0],[20,0]]
         ],
-        telephone: "01 42 82 34 56",
-        website: "https://haussmann.galerieslafayette.com/"
+        telephone: "01 01 01 01 01",
+        website: "https://magasin2.com/"
     },
     {
         id: 3,

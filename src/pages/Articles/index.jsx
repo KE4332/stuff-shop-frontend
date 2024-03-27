@@ -49,7 +49,7 @@ const SpanArticle = styled.span`
 
 function Articles() {
 
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     return (
         <ArticleList>

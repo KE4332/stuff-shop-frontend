@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Shops from './pages/Shops';
+import Shop from './pages/Shop';
 import Contact from './pages/Contact';
 
 //Components imports
@@ -16,6 +17,7 @@ import Header from './components/Header';
 
 //Utils imports
 import GlobalStyle from './utils/Globalstyle';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,6 +31,7 @@ root.render(
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<Article />} />
         <Route path="/shops" element={<Shops />} />
+        <Route path="/shops/:id" element={<Shop />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
