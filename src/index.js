@@ -14,10 +14,10 @@ import Contact from './pages/Contact';
 
 //Components imports
 import Header from './components/Header';
+import Cart from './components/Cart';
 
 //Utils imports
 import GlobalStyle from './utils/Globalstyle';
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,6 +35,7 @@ root.render(
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
+    <Cart />
   </React.StrictMode>
 );
 
