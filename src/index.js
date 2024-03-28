@@ -1,5 +1,5 @@
 //React imports
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
@@ -17,7 +17,8 @@ import Header from './components/Header';
 import Cart from './components/Cart';
 
 //Utils imports
-import GlobalStyle from './utils/Globalstyle';
+import GlobalStyle from './utils/style/Globalstyle';
+import { CartProvider } from './utils/context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,16 +26,18 @@ root.render(
   <React.StrictMode>
     <GlobalStyle />
     <Router>
-      <Header />
-      <Cart />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/articles/:id" element={<Article />} />
-        <Route path="/shops" element={<Shops />} />
-        <Route path="/shops/:id" element={<Shop />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <CartProvider>
+        <Header />
+        <Cart />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:id" element={<Article />} />
+          <Route path="/shops" element={<Shops />} />
+          <Route path="/shops/:id" element={<Shop />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </CartProvider>
     </Router>
   </React.StrictMode>
 );

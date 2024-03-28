@@ -2,10 +2,11 @@ import styled from "styled-components"
 
 import { useParams } from "react-router-dom"
 import { articleList } from "../../Data/articles"
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import closeBtn from "../../assets/closeBtn.png"
 import prev_next_icon from "../../assets/prev_next_icon.png"
+import { CartContext } from "../../utils/context"
 
 // interface ArticleProps {
 //     category: string,
@@ -140,6 +141,14 @@ const CloseBtn = styled.img`
     }
 `
 
+const AddToCartButton = styled.button`
+    color: white;
+    background-color: #28c5c5;
+    height: 4em;
+    width: 6.6em;
+    font-size: 2em;
+`
+
 function Article() {
     const { id } = useParams()
     const idNumber = parseInt(id)
@@ -154,6 +163,19 @@ function Article() {
 
     const setPrevIndex = () => setIndex((currentIndex + nb_images - 1) % nb_images)
     const setNextIndex = () => setIndex((currentIndex+1) % nb_images)
+
+    const { cart, updateCart } = useContext(CartContext);
+
+    function addToCart(name, price) {
+
+        const currentArticleAdded = cart.find((article) => article.name === name)
+
+        if (currentArticleAdded) {
+            updateCart(cart.map((articleInCart) => articleInCart.name === name ? {name, price: price, amount: articleInCart.amount + 1} : articleInCart))
+        } else {
+            updateCart([...cart, {name, price, amount: 1}])
+        }
+    }
 
     return (
         <ArticleContainer>
@@ -178,14 +200,16 @@ function Article() {
                 </ImageSelector>
             </ImageViewer>
 
-            <div style={{width: '600px'}}>
+            <div style={{width: '600px', marginRight: '2em'}}>
                 <div style={{ borderBottom: '2px black solid', paddingBottom:'20px' }}>
-                    <ArticleTitle>{article?.name}</ArticleTitle>
+                    <ArticleTitle>{article.name}</ArticleTitle>
                     <p><span style={{fontWeight: "bold"}}>Category:</span> {article?.category}</p>
                 </div>
                 <h2>{article?.price} €</h2>
-                <ArticleDescription>{article?.description}</ArticleDescription>
+                <ArticleDescription>{article.description}</ArticleDescription>
             </div>
+
+            <AddToCartButton onClick={() => addToCart(article.name, article.price)}>Add to Cart</AddToCartButton>
 
             {fullScreenImage ? (
                 <div>
