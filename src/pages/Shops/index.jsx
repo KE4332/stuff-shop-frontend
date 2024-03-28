@@ -65,13 +65,15 @@ function currentlyOpenString(openingHours) {
             const nextDayString = weekDays[nextDayIndex];
             const nextOpeningHour = openingHours[nextDayIndex][0]
 
-            return `Closed, open ${nextDayString}
-            at ${nextOpeningHour[0]}h${nextOpeningHour[1] ? nextOpeningHour[1] : ''}`;
+            return <SpanShopCard style={{color: 'red'}}>{`Closed, open ${nextDayString}
+            at ${nextOpeningHour[0]}h${nextOpeningHour[1] ? nextOpeningHour[1] : ''}`}</SpanShopCard>;
     }
 
     else {
         const minuteClose = openingHours[indexDayToday][1][1];
-        return `Opened, close at ${openingHours[indexDayToday][1][0]}h${minuteClose ? minuteClose : ''}`
+
+        return <SpanShopCard style={{color: 'green'}}>{`Opened, close
+        at ${openingHours[indexDayToday][1][0]}h${minuteClose ? minuteClose : ''}`}</SpanShopCard>
     }
 
 }
@@ -88,7 +90,7 @@ function Shops() {
                     <ShopCardText>
                         <SpanShopCard className="shopName">{name}</SpanShopCard>
                         <SpanShopCard style={{fontWeight: 'bold'}}>{adress}</SpanShopCard>
-                        <SpanShopCard>{currentlyOpenString(openingHours)}</SpanShopCard>
+                        {currentlyOpenString(openingHours)}
                     </ShopCardText>
                 </ShopCard>
             )}

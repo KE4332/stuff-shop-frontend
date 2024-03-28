@@ -183,7 +183,7 @@ function Article() {
                     <ArticleTitle>{article?.name}</ArticleTitle>
                     <p><span style={{fontWeight: "bold"}}>Category:</span> {article?.category}</p>
                 </div>
-                <h3>{article?.price} €</h3>
+                <h2>{article?.price} €</h2>
                 <ArticleDescription>{article?.description}</ArticleDescription>
             </div>
 

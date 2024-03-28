@@ -78,8 +78,8 @@ function Shop() {
                 <OpeningHoursDiv>
                     <ColumnContent>
                     {
-                        ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) =>
-                            <span>{day}</span>
+                        ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, index) =>
+                            <span key={index}>{day}</span>
                         )
                     }
                     </ColumnContent>
