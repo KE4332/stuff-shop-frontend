@@ -9,6 +9,7 @@ const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   background-color: #91eaff;
+  width: 92%;
 `
 const HomeLogo = styled.img`
   height: 4em;
@@ -42,7 +43,6 @@ function Header() {
                   Contact
                 </StyledLink>
             </div>
-
         </NavContainer>
     );
 }

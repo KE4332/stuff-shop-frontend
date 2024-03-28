@@ -10,6 +10,7 @@ const ShopDiv = styled.div`
     border-radius: 1%;
     background-color: #c4eeff;
     margin-top: 40px;
+    width: max-content;
 `
 
 const ShopCover = styled.img`
@@ -22,7 +23,7 @@ const ShopCover = styled.img`
 const ShopInfoDiv = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin: 30px;
 `
 
 const SpanInfo = styled.span`

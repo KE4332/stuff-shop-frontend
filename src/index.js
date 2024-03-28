@@ -26,6 +26,7 @@ root.render(
     <GlobalStyle />
     <Router>
       <Header />
+      <Cart />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
@@ -35,7 +36,6 @@ root.render(
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
-    <Cart />
   </React.StrictMode>
 );
 
