@@ -53,12 +53,6 @@ function currentlyOpenString(openingHours) {
     const h = currentDate.getHours();
     const m = currentDate.getMinutes();
 
-    console.log(h)
-    console.log(m)
-
-    console.log(openingHours[indexDayToday][1][0])
-    console.log(openingHours[indexDayToday][1][1])
-
     if (openingHours[indexDayToday] == null || h > openingHours[indexDayToday][1][0] ||
         h ===  openingHours[indexDayToday][1][0] & m >= openingHours[indexDayToday][1][1]) {
 
