@@ -63,7 +63,7 @@ function Shop() {
         <ShopDiv>
             <ShopCover src={shop.cover ? shop.cover : defaultShopLogo} alt='shop cover'/>
             <ShopInfoDiv>
-                <SpanInfo>{shop.name}</SpanInfo>
+                <h1>{shop.name}</h1>
                 <SpanInfo><SpanInfoTitle>Adress: </SpanInfoTitle>{shop.name}</SpanInfo>
                 <SpanInfo><SpanInfoTitle>Telephone: </SpanInfoTitle>{shop.telephone}</SpanInfo>
                 {shop.email ? (
