@@ -171,7 +171,7 @@ function Article() {
         const currentArticleAdded = cart.find((article) => article.name === name)
 
         if (currentArticleAdded) {
-            updateCart(cart.map((articleInCart) => articleInCart.name === name ? {name, price: price, amount: articleInCart.amount + 1} : articleInCart))
+            updateCart(cart.map((articleInCart) => articleInCart.name === name ? {name: name, price: price, amount: articleInCart.amount + 1} : articleInCart))
         } else {
             updateCart([...cart, {name, price, amount: 1}])
         }
