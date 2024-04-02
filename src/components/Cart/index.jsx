@@ -42,6 +42,13 @@ const ButtonCartEdit = styled.button`
     margin: 0px 2px 1em 2px;
 `
 
+const ArticleNameLink = styled.span`
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+`
+
 function Cart() {
 
     const { cart, updateCart } = useContext(CartContext);
@@ -93,9 +100,12 @@ function Cart() {
                     cart.length !== 0 ? (
                         <div>
                             <ul style={{width: '28em',border: '4px solid #c8c0a8'}}>
-                                {cart.map(({name, price, amount}, index) =>
+                                {cart.map(({id, name, price, amount}, index) =>
                                     <li key={index}>
-                                        <p><span style={{border: '2px solid black'}}>{amount}</span> x {name} = {amount * price}</p>
+                                        <p>
+                                            <span style={{border: '2px solid black'}}>{amount}</span> x
+                                            <ArticleNameLink onClick={() => navigate(`/articles/${id}`)}>{name}</ArticleNameLink> = {amount * price}€
+                                        </p>
                                         <span>
                                             <ButtonCartEdit onClick={() => changeAmount(name, -1)}>-</ButtonCartEdit>
                                             <ButtonCartEdit onClick={() => changeAmount(name, 1)}>+</ButtonCartEdit>
@@ -104,7 +114,7 @@ function Cart() {
                                     </li>
                                 )}
                             </ul>
-                            <span>Total: {cartTotalPrice()}</span>
+                            <span>Total: {cartTotalPrice()}€</span>
                         </div>
                     ) : (
                         <span>{'Your cart is empty :('}</span>

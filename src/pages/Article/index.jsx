@@ -166,14 +166,18 @@ function Article() {
 
     const { cart, updateCart } = useContext(CartContext);
 
-    function addToCart(name, price) {
+    function addToCart(article) {
 
-        const currentArticleAdded = cart.find((article) => article.name === name)
+        const id = article.id;
+        const name = article.name;
+        const price = article.price;
+
+        const currentArticleAdded = cart.find((articleInCart) => articleInCart.id === id)
 
         if (currentArticleAdded) {
-            updateCart(cart.map((articleInCart) => articleInCart.name === name ? {name: name, price: price, amount: articleInCart.amount + 1} : articleInCart))
+            updateCart(cart.map((articleInCart) => articleInCart.id === id ? {id, name: name, price: price, amount: articleInCart.amount + 1} : articleInCart))
         } else {
-            updateCart([...cart, {name, price, amount: 1}])
+            updateCart([...cart, {id, name, price, amount: 1}])
         }
     }
 
@@ -209,7 +213,7 @@ function Article() {
                 <ArticleDescription>{article.description}</ArticleDescription>
             </div>
 
-            <AddToCartButton onClick={() => addToCart(article.name, article.price)}>Add to Cart</AddToCartButton>
+            <AddToCartButton onClick={() => addToCart(article)}>Add to Cart</AddToCartButton>
 
             {fullScreenImage ? (
                 <div>
